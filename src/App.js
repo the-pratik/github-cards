@@ -9,8 +9,8 @@ class CardList extends React.Component {
 		return (
 			<div className="container">
 				<div className="card-deck row">
-					{this.props.profiles.length == 0 ? 
-						<img style={{ maxWidth: '500px', maxHeight: '500px', margin: '0 auto' }} src={background} className="img-fluid" alt="No users"/>  : 
+					{this.props.profiles.length == 0 ?
+						<img style={{ maxWidth: '500px', maxHeight: '500px', margin: '0 auto' }} src={background} className="img-fluid" alt="No users" /> :
 						this.props.profiles.map(profile => <Card removeCard={this.props.removeCard} profiles={this.props.profiles} key={profile.id} {...profile} />)
 					}
 				</div>
@@ -33,14 +33,14 @@ class Card extends React.Component {
 
 					<div className="card-body">
 						<h4 className="card-title">{profile.name}</h4>
-						<span className="card-text">User since <span style={{ color: 'darkgreen' }}>{profile.created_at.slice(0,10)}</span></span>
-						<hr/>
-						<p className="card-text" style={{fontFamily: 'sans-serif'}}>
+						<span className="card-text">User since <span style={{ color: 'darkgreen' }}>{profile.created_at.slice(0, 10)}</span></span>
+						<hr />
+						<p className="card-text" style={{ fontFamily: 'sans-serif' }}>
 							<a style={{ textDecoration: 'none', color: 'grey' }} target="_blank" href={`${profile.html_url}?tab=followers`}>
-								<i className="fa fa-users"></i> {profile.followers} followers . 
-							</a> 
+								<i className="fa fa-users"></i> {profile.followers} followers .
+							</a>
 							<a style={{ textDecoration: 'none', color: 'grey' }} target="_blank" href={`${profile.html_url}?tab=following`}>
-								<i className="fa fa-person-walking"></i> {profile.following} following 
+								<i className="fa fa-person-walking"></i> {profile.following} following
 							</a>
 						</p>
 						<span className="card-text" style={{ color: '#8500ff' }}><i className="fa fa-folder"></i> {profile.public_repos} repos</span>
@@ -66,16 +66,16 @@ class Form extends React.Component {
 			err = error.toJSON();
 		});
 
-		if(err.code == 'ERR_BAD_REQUEST'){
+		if (err.code == 'ERR_BAD_REQUEST') {
 			alert('Invalid Username!');
 		} else {
 
 			// To check if user is already added
-			const hasCard = this.props.profiles.some(function(card) {
+			const hasCard = this.props.profiles.some(function (card) {
 				return card.id === resp.data.id;
 			});
-			
-			if(hasCard){
+
+			if (hasCard) {
 				alert('User already added!');
 			} else {
 				this.props.onSubmit(resp.data);
@@ -86,18 +86,23 @@ class Form extends React.Component {
 	};
 
 	render() {
-  	return (
-    	<form id="head" onSubmit={this.handleSubmit}>
-    	  	<input 
-				type="text" 
-				placeholder="GitHub username" 
-				value={this.state.userName}
-				onChange={event => this.setState({ userName: event.target.value })}
-				required/>
-        	<button className="btn btn-primary">Add</button>
-    	</form>
-    );
-  }
+		return (
+			<div>
+				<form id="head" onSubmit={this.handleSubmit}>
+					<input
+						type="text"
+						placeholder="GitHub username"
+						value={this.state.userName}
+						onChange={event => this.setState({ userName: event.target.value })}
+						required />
+					<button className="btn btn-primary">Add</button>
+				</form>
+				<div style={{ textAlign: 'center', marginBottom: '10px' }}>
+					<span style={{ fontFamily: 'cursive' }}>Currently showing <span style={{ padding: '9px', borderRadius: '50%', backgroundColor: '#00cc00', color: '#fff'}}>{this.props.profiles.length}</span> profiles.</span>
+				</div>
+			</div>
+		);
+	}
 }
 
 class App extends React.Component {
@@ -112,7 +117,7 @@ class App extends React.Component {
 	};
 
 	removeCard = (cardId) => {
-		const newProfiles = this.state.profiles.filter( obj => obj.id !== cardId);
+		const newProfiles = this.state.profiles.filter(obj => obj.id !== cardId);
 		this.setState(prevState => ({
 			profiles: newProfiles
 		}));
@@ -122,7 +127,7 @@ class App extends React.Component {
 		return (
 			<div>
 				<div className="header">{this.props.title}</div>
-				<Form onSubmit={this.addNewProfile} profiles={this.state.profiles}/>
+				<Form onSubmit={this.addNewProfile} profiles={this.state.profiles} />
 				<CardList removeCard={this.removeCard} profiles={this.state.profiles} />
 			</div>
 		);
