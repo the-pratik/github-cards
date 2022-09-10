@@ -23,7 +23,6 @@ code {
 }
 
 .card-body{
-  margin: 0% 0% 0% 3%;
   padding: 6% 0%;
 }
 
@@ -44,4 +43,8 @@ form {
 form input {
   border-radius: 5px;
   margin-right: 10px;
+}
+
+.card:focus, .card:hover {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
 }
