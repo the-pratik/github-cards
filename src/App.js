@@ -22,7 +22,6 @@ class CardList extends React.Component {
 class Card extends React.Component {
 	render() {
 		const profile = this.props;
-		console.log(profile);
 
 		return (
 			<div className="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -46,7 +45,7 @@ class Card extends React.Component {
 						<span className="card-text" style={{ color: '#8500ff' }}><i className="fa fa-folder"></i> {profile.public_repos} repos</span>
 						<p className="card-text">{profile.company ? `Works at ${profile.company}` : ''}</p>
 						<a target="_blank" href={profile.html_url} className="btn btn-dark"><i className="fa fa-github"></i> Profile</a>
-						<button style={{ marginLeft: '10px' }} onClick={() => this.props.removeCard(profile.id)} className="btn btn-danger"><i class="fa fa-trash"></i></button>
+						<button style={{ marginLeft: '10px' }} onClick={() => this.props.removeCard(profile.id)} className="btn btn-danger"><i className="fa fa-trash"></i></button>
 					</div>
 				</div>
 			</div>
@@ -106,8 +105,13 @@ class Form extends React.Component {
 }
 
 class App extends React.Component {
-	state = {
+	state = JSON.parse(window.localStorage.getItem('state')) || {
 		profiles: [],
+	};
+
+	// To persist state on refresh
+	componentDidUpdate(){
+		window.localStorage.setItem('state', JSON.stringify(this.state));
 	};
 
 	addNewProfile = (profileData) => {
