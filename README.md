@@ -1,4 +1,7 @@
 # github-cards
+
+![m-githubcards](https://user-images.githubusercontent.com/66945794/209657333-f1c9a202-04f0-46a3-aa2e-6a14c5aa1916.png)
+
 An application which interacts with GitHub API to fetch the user from the provided username using react class component.
 
 # Getting Started with Create React App
