@@ -1,39 +1,75 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Recursive&display=swap");
+
+:root {
+  --bodyColor: #fff;
+  --backgroundColor: #0d1117;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  background-color: var(--backgroundColor);
+  color: var(--bodyColor);
+}
+
+body {
+  margin: 0;
+  font-family: "Recursive", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--backgroundColor) !important;
+  color: var(--bodyColor);
 }
 
 .header {
-	text-align: center;
+  padding-top: 30px;
+  text-align: center;
+  font-family: "Anton", sans-serif;
   font-size: 1.5rem;
   margin: 1rem;
+  color: var(--bodyColor);
 }
 
-.card{
+.card {
+  font-family: "Recursive", sans-serif;
   margin: 5% 0%;
 }
 
-.card-body{
+.card-body {
   padding: 6% 0%;
 }
 
-.card-title{
-  color: darkred;
+.card-title {
+  font-family: "Recursive", sans-serif;
+  color: var(--bodyColor);
+}
+
+.card-background {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card-text {
+  color: var(--bodyColor);
+}
+
+.profile-image {
+  border-radius: 100%;
+  background: #fff;
+  width: 180px;
+  position: relative;
+  top: -90px;
+}
+
+.profile {
+  position: relative;
+  top: -80px;
 }
 
 form {
   width: fit-content;
-	border: thin solid #ddd;
-  background-color: #fbfbfb;
+  background-color: var(--backgroundColor);
+  outline: none;
   padding: 2rem;
   margin: 2rem auto;
   display: flex;
@@ -41,10 +77,232 @@ form {
 }
 
 form input {
-  border-radius: 5px;
+  min-width: 210px;
   margin-right: 10px;
+  font-family: "Recursive", sans-serif;
+  background-color: var(--backgroundColor);
+  color: var(--bodyColor);
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
-.card:focus, .card:hover {
+form input:focus {
+  border-bottom: 2px solid #1c66d3;
+  transition-delay: 0.1s;
+}
+
+.showProfiles {
+  font-family: "Recursive", sans-serif;
+  color: var(--bodyColor);
+}
+
+.profileCount {
+  padding: 5px 9px;
+  border-radius: 50%;
+  background-color: #00cc00;
+  color: #fff;
+}
+
+.card:focus,
+.card:hover {
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 54px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.btn-align {
+  position: relative;
+  top: -80px;
+  right: -230px;
+  border-radius: 100% !important;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switchHeader {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.row {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border: 1px solid var(--bodyColor);
+  border-radius: 20px;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.flex .fa {
+  font-size: 50px;
+}
+
+.large-text {
+  font-family: "Anton", sans-serif;
+  color: var(--bodyColor);
+  font-size: xx-large;
+}
+
+.small-text {
+  color: var(--bodyColor);
+  font-family: "Anton", sans-serif;
+}
+
+.column {
+  color: var(--bodyColor);
+  width: 25% !important;
+}
+
+.footer {
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background: #000;
+  color: var(--bodyColor);
+}
+
+@media screen and (min-width: 548px) {
+  form input {
+    min-width: 390px;
+  }
+}
+
+@media screen and (max-width: 1399px) {
+  .btn-align {
+    right: -200px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .btn-align {
+    right: -170px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .btn-align {
+    right: -190px;
+  }
+
+  .column {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .btn-align {
+    right: -380px;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .btn-align {
+    right: -350px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .btn-align {
+    right: -330px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .btn-align {
+    right: -300px;
+  }
+
+  .column {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .btn-align {
+    right: -270px;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .btn-align {
+    right: -250px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .btn-align {
+    right: -220px;
+  }
+}
+
+@media screen and (max-width: 285px) {
+  .btn-align {
+    right: -200px;
+  }
 }
