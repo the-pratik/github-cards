@@ -1,6 +1,10 @@
 # github-cards
 
-![m-githubcards](https://user-images.githubusercontent.com/66945794/209657333-f1c9a202-04f0-46a3-aa2e-6a14c5aa1916.png)
+## Combined View:
+![image](https://github.com/the-pratik/github-cards/assets/66945794/269cf7be-6bc4-4a67-9d04-eddecfaddccc)
+
+## Single View:
+![image](https://github.com/the-pratik/github-cards/assets/66945794/4bb7b739-1ca7-4fb0-ad8c-8ec36b269adb)
 
 An application which interacts with GitHub API to fetch the user from the provided username using react class component.
 
