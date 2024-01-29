@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
 import App from "../App";
 import Profile from "../Profile";
+import ProfileSkeleton from "../skeletons/ProfileSkeleton";
 
 export class Routes extends Component {
   router = createBrowserRouter([
@@ -17,6 +18,10 @@ export class Routes extends Component {
         {
           path: "/profile/:id",
           element: <Profile />,
+        },
+        {
+          path: "/test",
+          element: <ProfileSkeleton />,
         },
       ],
     },

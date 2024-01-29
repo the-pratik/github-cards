@@ -3,9 +3,12 @@ import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NotFound from "./not-found.svg";
+
+import GitIcon from "./images/GitIcon.svg";
+import NotFound from "./images/not-found.svg";
 
 import { Link } from "react-router-dom";
+import toggleTheme from "./helpers/ToggleTheme";
 
 class CardList extends React.Component {
   render() {
@@ -54,7 +57,7 @@ class Card extends React.Component {
             <div className="view overlay">
               <img
                 className="card-img-top"
-                src={profile.avatar_url}
+                src={profile.avatar_url || GitIcon}
                 style={{ borderRadius: "100%" }}
                 alt="Card Cap"
               />
@@ -157,7 +160,7 @@ class App extends React.Component {
 
   // Check what is the persisted theme
   componentDidMount() {
-    this.toggleTheme(this.state.checked);
+    toggleTheme(this.state.checked);
   }
 
   // To persist state on refresh
@@ -180,20 +183,7 @@ class App extends React.Component {
 
   handleOnCheck = (event) => {
     this.setState({ checked: event.target.checked });
-    this.toggleTheme(event.target.checked);
-  };
-
-  toggleTheme = (theme) => {
-    if (theme) {
-      document.documentElement.style.setProperty("--bodyColor", "#fff");
-      document.documentElement.style.setProperty(
-        "--backgroundColor",
-        "#0d1117"
-      );
-    } else {
-      document.documentElement.style.setProperty("--bodyColor", "#0d1117");
-      document.documentElement.style.setProperty("--backgroundColor", "#fff");
-    }
+    toggleTheme(event.target.checked);
   };
 
   render() {

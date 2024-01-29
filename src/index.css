@@ -224,7 +224,7 @@ input:checked + .slider:before {
   width: 100%;
   bottom: 0;
   background: #000;
-  color: var(--bodyColor);
+  color: #fff;
 }
 
 @media screen and (min-width: 548px) {
