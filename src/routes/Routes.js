@@ -19,10 +19,6 @@ export class Routes extends Component {
           path: "/profile/:id",
           element: <Profile />,
         },
-        {
-          path: "/test",
-          element: <ProfileSkeleton />,
-        },
       ],
     },
   ]);
